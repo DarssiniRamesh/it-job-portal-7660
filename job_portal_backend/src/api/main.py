@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .routes import auth
 from .routes import profile
+from .routes import jobs
 
 app = FastAPI()
 
@@ -18,6 +19,8 @@ app.add_middleware(
 app.include_router(auth.router)
 # Register profile management routes
 app.include_router(profile.router)
+# Register job (employer/candidate) routes
+app.include_router(jobs.router)
 
 @app.get("/")
 def health_check():
